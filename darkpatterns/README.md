@@ -1,8 +1,8 @@
 # Dark Patterns & Adversarial Influence — Fast Triage Scanners
 
-Reference implementations of **Layer 14** in Go and Java, built for organizations: these patterns are risks to whole organizations, not just individuals, so the scan is designed to run quickly over many reported interactions (intake queues, escalation logs, complaint triage) and produce a structured five-field record per detected tactic.
+Reference implementations of **Layer 14** in Go, Java, and Python, built for organizations: these patterns are risks to whole organizations, not just individuals, so the scan is designed to run quickly over many reported interactions (intake queues, escalation logs, complaint triage) and produce a structured five-field record per detected tactic.
 
-Both implementations share the same rule set and output format. No dependencies, no network, single source file each — easy to drop into an existing codebase or CI pipeline.
+All three implementations share the same rule set and output format. The Python scanner is held to behavioral parity with the Go reference: identical input format, five-field records, risk thresholds, output strings, and exit codes (0 on success, 1 on input error). No dependencies, no network, single source file each — easy to drop into an existing codebase or CI pipeline.
 
 ## The five tactics and their triggers
 
@@ -62,6 +62,18 @@ cd go
 go run darkscan.go ../sample-input.txt
 # or from stdin:
 go run darkscan.go - < ../sample-input.txt
+```
+
+## Run the Python scanner
+
+Requires Python 3.8+ (stdlib only).
+
+```bash
+cd python
+python3 darkscan.py ../sample-input.txt
+# or from stdin:
+python3 darkscan.py - < ../sample-input.txt
+# exit codes: 0 on success, 1 on input error (same as Go and Java)
 ```
 
 ## Run the Java scanner
