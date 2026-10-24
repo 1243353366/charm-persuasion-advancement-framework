@@ -93,6 +93,16 @@ javac DarkScan.java && java DarkScan ../sample-input.txt
 - **1–2 triggered:** apply countermeasures, document the false-positive analysis, monitor.
 - **3+ triggered:** elevated — run the Layer 11 counterfactuals, apply the escalation threshold of the strongest signal, and involve the appropriate authority (manager, compliance, security) if the threshold is met.
 
+## Continuous cross-language conformance
+
+`.github/workflows/conformance.yml` compiles all three scanners (Go 1.22, Temurin 17, Python 3.12) on every push that touches `darkpatterns/`, then runs `darkpatterns/tests/conformance.py`: the shared corpus in `darkpatterns/tests/corpus/` is executed by Go, Java, and Python, and the run fails unless all three produce byte-identical output, fire the expected tactic counts, and exit identically on input errors.
+
+Locally, with all three toolchains installed:
+
+```bash
+python3 darkpatterns/tests/conformance.py
+```
+
 ## Standing rule
 
 These scanners produce *indicators*, not verdicts. Every signal carries a false-positive explanation on its face, and the escalation thresholds are deliberately conservative. The output is a triage record for a human decision-maker, never an automated action against a person.
