@@ -1,5 +1,7 @@
 # The Charm–Persuasion–Advancement Framework
 
+[![Conformance](https://github.com/1243353366/charm-persuasion-advancement-framework/actions/workflows/conformance.yml/badge.svg)](https://github.com/1243353366/charm-persuasion-advancement-framework/actions/workflows/conformance.yml)
+
 **Training edition · Layers 0–14 · Three core protocols · Mirror test · Final decision gate**
 
 A structured framework for training people in genuine charm, ethical persuasion, and career advancement through evidence, value, reciprocity, timing, and defensible influence.
