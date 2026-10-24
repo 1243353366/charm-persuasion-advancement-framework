@@ -1,6 +1,6 @@
 # The Charm–Persuasion–Advancement Framework
 
-**Training edition · Layers 0–11 · Three core protocols · Mirror test · Final decision gate**
+**Training edition · Layers 0–12 · Three core protocols · Mirror test · Final decision gate**
 
 A structured framework for training people in genuine charm, ethical persuasion, and career advancement through evidence, value, reciprocity, timing, and defensible influence.
 
@@ -246,6 +246,34 @@ Before executing any persuasive play, apply the mirror test:
 If any answer is no, redesign the play at Layer 4. The framework's techniques are only permitted to run on top of truth.
 
 **Output:** Pass/fail per question, with a redesigned play on any fail.
+
+## Layer 12 — The Provocation Loop (Recognition and Defense)
+
+**Core question: Is someone baiting a short-term reaction out of me — or am I about to run that play on someone else?**
+
+The provocation loop is a recognized manipulation pattern with four moves:
+
+1. **Incentive identification:** the operator locates a short-term incentive — something the target wants to defend, prove, obtain, or retaliate against.
+2. **Friction introduction:** the operator introduces a provocation that makes the immediate payoff salient — bait engineered to trigger a reaction while the audience that matters is watching.
+3. **Consequence transfer:** the target acts on the provocation in a way that damages their own longer-term position — the intemperate email, the public outburst, the hasty resignation, the overcommitment.
+4. **Persistent benefit:** the operator gains an advantage that outlasts the interaction — relative credibility, the target's role, the narrative of what happened.
+
+**Why this framework prohibits running it:** the target's "decision" is manufactured under engineered provocation, not informed consent, so it fails the mirror test on every question; it deliberately damages a third party's long-term position for your short-term gain; and it destroys the only durable asset this framework builds — trust. The operator's advantage collapses the first time the pattern is named aloud, and counterparties eventually run Layer 7 on you too.
+
+**Recognition signals (defense):**
+- Someone hands you a platform to prove something at the exact moment you're upset.
+- The audience that matters is present before you act.
+- The immediate payoff is emotional (vindication, revenge, victory) while the cost is positional (reputation, leverage, options).
+- You are about to act while angry, and the only clock running is theirs.
+
+**Counter-play:**
+- Name the incentive: what does the other side gain if I take this bait?
+- Separate the provocation from the issue. Respond to the issue on your timeline, not the provocation on theirs.
+- Apply the 24-hour rule: nothing consequential gets sent while provoked. Real clocks survive a day; bait doesn't.
+- Verify any urgency presented to you (Protocol 3: real clocks only).
+- If you catch yourself mid-loop, stop escalating. The cheapest exit is always before you act.
+
+**Output:** Loop identified or ruled out; provocation decoupled from issue; response scheduled on your clock, or no response.
 
 ## The Final Decision Gate
 
