@@ -1,0 +1,13 @@
+# Only reaction engineering should fire: provocative language, undocumented initiating event.
+immediate_payoff_emphasized=no
+longterm_cost_quantified=yes
+selective_disclosure=no
+insinuation_or_framing=no
+deadline_claimed=no
+deadline_source=none
+deadline_expiry_consequence=none
+binary_framing=no
+independent_alternatives_generated=yes
+provocative_language=yes
+initiating_event_documented=no
+pressured_to_respond_quickly=yes
