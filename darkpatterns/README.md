@@ -1,8 +1,8 @@
 # Dark Patterns & Adversarial Influence — Fast Triage Scanners
 
-Reference implementations of **Layer 14** in Go, Java, and Python, built for organizations: these patterns are risks to whole organizations, not just individuals, so the scan is designed to run quickly over many reported interactions (intake queues, escalation logs, complaint triage) and produce a structured five-field record per detected tactic.
+Reference implementations of **Layer 14** in Go, Java, Python, and C, built for organizations: these patterns are risks to whole organizations, not just individuals, so the scan is designed to run quickly over many reported interactions (intake queues, escalation logs, complaint triage) and produce a structured five-field record per detected tactic.
 
-All three implementations share the same rule set and output format. The Python scanner is held to behavioral parity with the Go reference: identical input format, five-field records, risk thresholds, output strings, and exit codes (0 on success, 1 on input error). No dependencies, no network, single source file each — easy to drop into an existing codebase or CI pipeline.
+All four implementations share the same rule set and output format. The Python and C scanners are held to behavioral parity with the Go reference: identical input format, five-field records, risk thresholds, output strings, and exit codes (0 on success, 1 on input error). No dependencies, no network, single source file each — easy to drop into an existing codebase or CI pipeline.
 
 ## The five tactics and their triggers
 
@@ -64,6 +64,19 @@ go run darkscan.go ../sample-input.txt
 go run darkscan.go - < ../sample-input.txt
 ```
 
+## Run the C scanner
+
+Requires any C11 compiler (cc, gcc, or clang). Zero dependencies, embeds anywhere a C compiler exists — appliances, air-gapped triage hosts, anywhere managed runtimes are unavailable.
+
+```bash
+cd c
+cc -std=c11 -Wall -Wextra -Werror -O2 -o darkscan darkscan.c
+./darkscan ../sample-input.txt
+# or from stdin:
+./darkscan - < ../sample-input.txt
+# exit codes: 0 on success, 1 on input error (same as Go, Java, and Python)
+```
+
 ## Run the Python scanner
 
 Requires Python 3.8+ (stdlib only).
@@ -95,7 +108,7 @@ javac DarkScan.java && java DarkScan ../sample-input.txt
 
 ## Continuous cross-language conformance
 
-`.github/workflows/conformance.yml` compiles all three scanners (Go 1.22, Temurin 17, Python 3.12) on every push that touches `darkpatterns/`, then runs `darkpatterns/tests/conformance.py`: the shared corpus in `darkpatterns/tests/corpus/` is executed by Go, Java, and Python, and the run fails unless all three produce byte-identical output, fire the expected tactic counts, and exit identically on input errors.
+`.github/workflows/conformance.yml` compiles all three scanners (Go 1.22, Temurin 17, Python 3.12) on every push that touches `darkpatterns/`, then runs `darkpatterns/tests/conformance.py`: the shared corpus in `darkpatterns/tests/corpus/` is executed by every implementation whose toolchain is available (Go, Java, Python, C), and the run fails unless all three produce byte-identical output, fire the expected tactic counts, and exit identically on input errors.
 
 Locally, with all three toolchains installed:
 
