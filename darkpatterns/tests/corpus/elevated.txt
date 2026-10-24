@@ -1,0 +1,23 @@
+# Darkscan sample input — a pushed vendor decision with manufactured urgency
+# Observed facts about the interaction being triaged.
+
+immediate_payoff_emphasized=yes
+longterm_cost_quantified=no
+decision_criteria_documented=yes
+
+selective_disclosure=yes
+insinuation_or_framing=no
+full_record_preserved=yes
+timeline_checked=no
+
+deadline_claimed=yes
+deadline_source=none
+deadline_expiry_consequence=none
+
+binary_framing=yes
+alternatives_exist=yes
+independent_alternatives_generated=no
+
+provocative_language=no
+initiating_event_documented=yes
+pressured_to_respond_quickly=yes
