@@ -1,0 +1,17 @@
+# Clean interaction: a real deadline, quantified costs, open record.
+immediate_payoff_emphasized=no
+longterm_cost_quantified=yes
+decision_criteria_documented=yes
+selective_disclosure=no
+insinuation_or_framing=no
+full_record_preserved=yes
+timeline_checked=yes
+deadline_claimed=yes
+deadline_source=named
+deadline_expiry_consequence=named
+binary_framing=no
+alternatives_exist=yes
+independent_alternatives_generated=yes
+provocative_language=no
+initiating_event_documented=yes
+pressured_to_respond_quickly=no
