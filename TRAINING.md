@@ -48,7 +48,9 @@ Each week has drills (solo), sparring (with a partner), and a scoring rubric. Do
 
 **Drill:** List every deadline in your current work context that is REAL (review cycles, launches, budget windows). For one goal, attach the real clock to a confirmed priority and draft the sentence. Also write your personal stop-date.
 
-**Sparring:** Partner tries to goad you into inventing urgency ("just tell them it's urgent"). You must produce a clock with a source or decline to use a clock. Invented clocks are an automatic fail.
+**Drill 2:** Take your three real deadlines and classify each as real or *convenient*: what creates it, and what actually happens if it expires? If expiry only causes inconvenience rather than the claimed consequence, mark it convenient — usable for planning, prohibited as pressure.
+
+**Sparring:** Partner tries to goad you into inventing urgency ("just tell them it's urgent"). You must produce a clock with a source and its expiry consequence, or decline to use a clock. Invented clocks and disproportionate real ones are an automatic fail.
 
 **Rubric:** One real-clock sentence drafted with source documented, plus a written stop-date.
 
@@ -85,6 +87,20 @@ Each week has drills (solo), sparring (with a partner), and a scoring rubric. Do
 **Rubric:** One written loop analysis per week, and at least one live deferral during sparring. The skill being trained is not suppression — it is noticing the bait before the payoff becomes salient.
 
 ---
+
+## Standing drill — The four counterfactuals (Layer 11)
+
+Before any consequential ask, answer in writing:
+1. **Adverse-outcome:** If my read of their motives is wrong, is my plan still proportionate?
+2. **Independent-review:** Would an uninvolved reviewer reach my conclusion using only the evidence I had before acting?
+3. **Role-reversal:** Would I accept this method if a colleague used it against me for a legitimate business objective?
+4. **Benefit-separation:** With zero personal advantage, is the action still appropriate?
+
+Any "no" or "not sure": redesign at Layer 4 before you act.
+
+## Standing drill — Refusal handling (Layer 7)
+
+**Drill:** After every interaction this week where you heard a refusal, partial withdrawal, or material concern, record: what you did in the next 60 seconds, and whether it was "stop and reassess" or "reinterpret and keep pushing." Target: 100% stop-and-reassess. A decline from the decision-maker is a completed outcome, not an obstacle to solve.
 
 ## Standing rules for trainees
 
