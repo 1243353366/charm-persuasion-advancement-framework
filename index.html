@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charm–Persuasion–Advancement Framework</title>
+<style>
+  :root { --bg:#111418; --card:#1a1f26; --border:#2a323c; --text:#e8e6e3; --muted:#9aa4af; --accent:#e8b34b; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family: Georgia, 'Times New Roman', serif; background:var(--bg); color:var(--text); line-height:1.65; padding:24px; max-width:860px; margin:0 auto; }
+  h1 { font-size:1.7em; margin-bottom:4px; }
+  h2 { font-size:1.25em; margin:28px 0 10px; color:var(--accent); border-bottom:1px solid var(--border); padding-bottom:6px; }
+  h3 { font-size:1.05em; margin:18px 0 6px; }
+  p, li { color:var(--text); }
+  .sub { color:var(--muted); font-size:.95em; margin-bottom:20px; }
+  .card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:18px 20px; margin:12px 0; }
+  .card p, .card li { font-size:.95em; }
+  .muted { color:var(--muted); font-size:.9em; }
+  label { display:block; margin:14px 0 4px; font-weight:bold; font-size:.9em; color:var(--accent); }
+  input, textarea, select { width:100%; background:#0d1013; border:1px solid var(--border); color:var(--text); border-radius:6px; padding:8px 10px; font-family:inherit; font-size:.95em; }
+  textarea { min-height:56px; resize:vertical; }
+  button { background:var(--accent); color:#111; border:none; border-radius:6px; padding:10px 18px; font-weight:bold; cursor:pointer; margin-top:14px; font-size:1em; }
+  button.ghost { background:transparent; color:var(--muted); border:1px solid var(--border); }
+  #script { white-space:pre-wrap; background:#0d1013; border:1px dashed var(--border); border-radius:8px; padding:16px; margin-top:10px; display:none; font-size:.95em; }
+  .warn { color:#e07856; font-weight:bold; }
+  table { width:100%; border-collapse:collapse; margin:10px 0; font-size:.85em; }
+  th, td { border:1px solid var(--border); padding:6px 8px; text-align:left; }
+  th { color:var(--accent); }
+  .tag { display:inline-block; background:#0d1013; border:1px solid var(--border); border-radius:20px; padding:2px 10px; font-size:.78em; color:var(--muted); margin:2px 4px 2px 0; cursor:pointer; }
+  .tag.active { border-color:var(--accent); color:var(--accent); }
+  .search { margin:8px 0 16px; }
+  .layer { display:none; }
+  .layer.show { display:block; }
+</style>
+</head>
+<body>
+
+<h1>The Charm–Persuasion–Advancement Framework</h1>
+<p class="sub">Training edition · Layers 0–11 · Three core protocols · Mirror test · Decision gate. Runs entirely in your browser.</p>
+
+<h2>Core protocols</h2>
+<div class="card">
+  <p><b>1. Start with a statement.</b> Open with a verified fact + why it matters to them + what the conversation decides. No ask inside the statement.</p>
+  <p><b>2. Two questions and a confirmation.</b> Q1: their position. Q2: their priority. Then restate it as a checkable commitment and get an explicit yes. Never ask for anything before the confirmation lands.</p>
+  <p><b>3. Time-based limitation.</b> Attach only real deadlines (documented source) to their confirmed priority. Time-box your own push: three exchanges, then stop and honor it.</p>
+</div>
+
+<h2>Conversation builder</h2>
+<div class="card">
+  <p class="muted">Draft a full protocol-stack interaction. Nothing leaves your browser.</p>
+  <label>1. Opening statement (verified fact + why it matters to them + what we'll decide)</label>
+  <textarea id="stmt" placeholder="The launch is Tuesday and your dashboard is the one thing leadership will look at. I want to agree today which numbers we lock."></textarea>
+  <label>2. Question 1 — their position</label>
+  <input id="q1" placeholder="What's your read on how the review went?">
+  <label>3. Question 2 — their priority</label>
+  <input id="q2" placeholder="If we fix one thing before Tuesday, which one?">
+  <label>4. Confirmation (restate their expected answer as a checkable commitment)</label>
+  <input id="conf" placeholder="So dashboard accuracy is the priority and the rest can wait. Agreed?">
+  <label>5. The ask, clocked</label>
+  <textarea id="ask" placeholder="Then I need two hours of your analyst's time before Friday. The budget window closes on the 15th, so Friday is the last day this cycle."></textarea>
+  <label>6. Is the deadline real?</label>
+  <select id="real">
+    <option value="yes">Yes — I can name the source (review cycle, launch date, budget window…)</option>
+    <option value="no">No / I'd be inventing it</option>
+  </select>
+  <label>7. Your personal stop-date (binding on you)</label>
+  <input id="stop" placeholder="2026-11-06 — three exchanges, then stop">
+  <button onclick="build()">Generate interaction plan</button>
+  <div id="script"></div>
+</div>
+
+<h2>Framework layers</h2>
+<div class="search"><input id="filter" placeholder="Search layers…" oninput="doFilter()"></div>
+<div id="layers"></div>
+
+<h2>Mirror test & decision gate</h2>
+<div class="card">
+  <p><b>Mirror test — all four must pass before any ask goes out:</b></p>
+  <ul style="margin:8px 0 0 18px">
+    <li>Would I be comfortable if this message were read aloud by the recipient to their team?</li>
+    <li>Does the statement survive fact-checking?</li>
+    <li>Is the deadline real?</li>
+    <li>Would I still want this relationship after the interaction?</li>
+  </ul>
+  <p style="margin-top:12px"><b>Decision gate:</b> layers 0–2 mapped · statement verified · questions and confirmation written · clock real and stop-date set · mirror test passed · you can accept a no without relationship damage.</p>
+  <p class="warn">Stopping conditions: clock expired, priority unservable, success would require an invented fact or fake deadline, compromised consent, or cost exceeding value. Escalating pressure is never the next step — re-map, redesign, or exit.</p>
+</div>
+
+<script>
+const layers = [
+["Layer 0 — Reality, Reputation, and Uncertainty","What do people actually think of me, and what's the evidence? Classify reputation data as observed, corroborated, inferred, hypothesized, or unknown. Silence is not approval; one critic is not consensus."],
+["Layer 1 — Value Mapping","What do I offer that others want? Inventory skills, information, effort, access, reliability, and relief. Rank by scarcity × visibility."],
+["Layer 2 — Audience and Incentive Mapping","Who matters and what does each reward? Map decision-makers, sponsors, gatekeepers, peers. Benefiting from your work is not the same as advocating for you — advocacy costs them something."],
+["Layer 3 — Charm Skill Building","Presence, warmth, expressiveness, attentiveness — all four are trainable through drills (Weeks 3, TRAINING.md)."],
+["Layer 4 — The Opener","Draft the statement. Test: true? about them? does it make the purpose obvious? No ask inside."],
+["Layer 5 — Two Questions and a Confirmation","Q1 position, Q2 priority, then a written confirmation sentence. Never improvise the confirmation."],
+["Layer 6 — The Clock","Identify the genuine external deadline, attach it to their confirmed priority, and set your own binding stop-date before you start."],
+["Layer 7 — Resistance and Objections","Classify resistance: information gap (fix with evidence), priority conflict (renegotiate scope), constraint (don't push — redesign), or soft no (treat as no)."],
+["Layer 8 — Follow-Through and Reciprocity","Deliver commitments on time, keep a visible record of agreements, and bank reciprocity silently — score-keeping out loud cancels the deposit."],
+["Layer 9 — Visibility and Sponsorship","Who sees your work, who repeats your name in rooms you're not in, and who has the power plus incentive to sponsor you? Make sponsors look good, visibly, without demanding credit each time."],
+["Layer 10 — Opportunity Evaluation","Map value received, obligations created, switching costs, alternatives, timing. Know floor, target, and walk-away before negotiating."],
+["Layer 11 — The Mirror Test","Would this hold up in public? Truth-check the statement, verify the clock, want the relationship afterward. Any fail: redesign at Layer 4."]
+];
+const el = document.getElementById('layers');
+layers.forEach((l,i)=>{ el.innerHTML += `<div class='card layer' data-i='${i}'><h3>${l[0]}</h3><p>${l[1]}</p></div>`; });
+function doFilter(){
+  const q = document.getElementById('filter').value.toLowerCase();
+  document.querySelectorAll('.layer').forEach(c=>{
+    c.classList.toggle('show', !q || c.textContent.toLowerCase().includes(q));
+  });
+  if(q) document.getElementById('layers').style.display='block';
+  else document.getElementById('layers').style.display='none';
+}
+document.getElementById('layers').style.display='none';
+function build(){
+  const v = id => document.getElementById(id).value.trim();
+  const real = document.getElementById('real').value;
+  let s = "INTERACTION PLAN\n\n";
+  s += "OPENING STATEMENT:\n" + (v('stmt')||'(write a verified fact + their stake + the decision)') + "\n\n";
+  s += "Q1 (POSITION): " + (v('q1')||'—') + "\nQ2 (PRIORITY): " + (v('q2')||'—') + "\n\n";
+  s += "CONFIRMATION (get an explicit yes before advancing):\n" + (v('conf')||'—') + "\n\n";
+  s += "CLOCKED ASK:\n" + (v('ask')||'—') + "\n\n";
+  s += "DEADLINE: " + (real==='yes' ? "real — source named" : "⚠ NOT real — you may not use a clock. Invented urgency is an automatic fail.") + "\n";
+  s += "PERSONAL STOP-DATE: " + (v('stop')||'— set one before you start') + "\n\n";
+  s += "TIME-BOX: three exchanges maximum, then stop. Record the outcome; re-map, redesign, or exit.\n\n";
+  s += "MIRROR TEST: message readable aloud to their team? statement fact-checked? clock real? relationship survives? All four or redesign.";
+  const out = document.getElementById('script');
+  out.style.display='block'; out.textContent=s;
+}
+</script>
+</body>
+</html>
