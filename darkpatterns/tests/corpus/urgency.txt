@@ -1,0 +1,11 @@
+# Only artificial urgency should fire: deadline with no source or expiry consequence.
+immediate_payoff_emphasized=no
+longterm_cost_quantified=yes
+selective_disclosure=no
+insinuation_or_framing=no
+deadline_claimed=yes
+deadline_source=none
+deadline_expiry_consequence=none
+binary_framing=no
+independent_alternatives_generated=yes
+provocative_language=no
