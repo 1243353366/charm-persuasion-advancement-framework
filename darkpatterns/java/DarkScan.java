@@ -101,9 +101,16 @@ public class DarkScan {
 
     static void line(String s) { System.out.println(s); }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String path = args.length > 0 ? args[0] : "-";
-        Map<String, String> f = loadFields(path);
+        Map<String, String> f;
+        try {
+            f = loadFields(path);
+        } catch (IOException e) {
+            System.err.println("error: " + e.getMessage());
+            System.exit(1);
+            return;
+        }
 
         line("DARK PATTERNS & ADVERSARIAL INFLUENCE SCAN (Layer 14)");
         line("================================================================");
@@ -122,11 +129,11 @@ public class DarkScan {
         line("");
         line("----------------------------------------------------------------");
         if (matched == 0) {
-            line("Risk summary: 0 tactics triggered - no adversarial signals; log and close.");
+            line("Risk summary: 0 tactics triggered — no adversarial signals; log and close.");
         } else if (matched <= 2) {
-            line("Risk summary: " + matched + " tactic(s) triggered - apply countermeasures, document the false-positive analysis, monitor.");
+            line("Risk summary: " + matched + " tactic(s) triggered — apply countermeasures, document the false-positive analysis, monitor.");
         } else {
-            line("Risk summary: " + matched + " tactics triggered - ELEVATED. Run the Layer 11 counterfactuals, apply the strongest signal's escalation threshold, and involve the appropriate authority if met.");
+            line("Risk summary: " + matched + " tactics triggered — ELEVATED. Run the Layer 11 counterfactuals, apply the strongest signal's escalation threshold, and involve the appropriate authority if met.");
         }
         line("Reciprocity audit: for every tactic detected, check whether your own proposed conduct reproduces the same mechanism.");
         line("Standing rule: this output is a triage record for a human decision-maker, never an automated action against a person.");
