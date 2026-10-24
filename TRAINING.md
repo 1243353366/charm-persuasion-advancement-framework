@@ -76,6 +76,14 @@ Each week has drills (solo), sparring (with a partner), and a scoring rubric. Do
 
 **Rubric:** Mirror test passed with evidence; sponsor list has 3 names with one concrete action each.
 
+## Standing drill — The Provocation Loop (Layer 12)
+
+**Drill (weekly):** Review one moment this week when you felt provoked. Write down: what incentive was live (defend / prove / obtain / retaliate), what the immediate emotional payoff would have been, what the positional cost of reacting would have been, and who was watching. Then note whether the provocation and the real issue were separable.
+
+**Sparring:** Partner baits you with a realistic provocation tied to a real incentive (criticism of your work in front of others, a loaded question, manufactured urgency). Pass condition: you either ask one clarifying question instead of reacting, or explicitly defer to your own timeline ("I'll come back to this tomorrow"). Reacting within 60 seconds is a fail.
+
+**Rubric:** One written loop analysis per week, and at least one live deferral during sparring. The skill being trained is not suppression — it is noticing the bait before the payoff becomes salient.
+
 ---
 
 ## Standing rules for trainees
