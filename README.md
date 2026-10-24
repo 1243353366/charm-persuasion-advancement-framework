@@ -1,6 +1,6 @@
 # The Charm–Persuasion–Advancement Framework
 
-**Training edition · Layers 0–13 · Three core protocols · Mirror test · Final decision gate**
+**Training edition · Layers 0–14 · Three core protocols · Mirror test · Final decision gate**
 
 A structured framework for training people in genuine charm, ethical persuasion, and career advancement through evidence, value, reciprocity, timing, and defensible influence.
 
@@ -303,6 +303,32 @@ The provocation loop is a recognized manipulation pattern with four moves:
 - If you catch yourself mid-loop, stop escalating. The cheapest exit is always before you act.
 
 **Output:** Loop identified or ruled out; provocation decoupled from issue; response scheduled on your clock, or no response.
+
+## Layer 14 — Dark Patterns and Adversarial Influence
+
+**Core question: Which influence methods are in play here, why do they work, and what reduces the vulnerability?**
+
+This layer is adversarial intelligence, not an arsenal. The governing distinction is between *understanding* a tactic and *operationalizing* it against a specific person: this layer trains recognition and countermeasures only, under the same rule as Layer 12.
+
+| # | Tactic | Attack surface | How it works | Defense |
+|---|---|---|---|---|
+| 1 | Incentive distortion | Decision quality | Makes an immediate payoff more salient than a long-term cost | Evaluate against pre-established criteria rather than the emotional intensity of the moment |
+| 2 | Reputation manipulation | Credibility | Selective disclosure, insinuation, and misleading framing shape how observers interpret an event | Preserve original records, separate fact from inference, check claims against the complete timeline |
+| 3 | Artificial urgency | Deliberation | A manufactured deadline compresses evaluation time and discourages independent review | Verify the deadline, ask what actually changes when it expires, use a predetermined decision rule |
+| 4 | Option restriction | Perceived choice | A decision is framed as binary when other viable choices exist | Generate alternatives independently; distinguish genuine constraints from asserted ones |
+| 5 | Reaction engineering | Self-regulation | Provocation pushes toward an impulsive response that distracts from the original issue | Delay consequential reactions, document the initiating event, refuse to let hostility determine your next move |
+
+**Operating rule — five fields per tactic:** Signal (what observable behavior suggests it may be present?), Mechanism (what cognitive, social, or institutional vulnerability does it target?), Countermeasure (what concrete action reduces that vulnerability?), False-positive risk (what innocent explanation produces the same signal?), Escalation threshold (what evidence justifies involving a manager, security, or another appropriate authority?).
+
+The false-positive field is essential. Without it, the framework turns ordinary disagreement into imagined adversarial intent.
+
+**Reciprocity audit:** if you recognize a tactic because you understand how it works, check whether your own proposed conduct reproduces the same mechanism. This extends the Layer 11 mirror test and the Layer 13 pressure ceiling.
+
+**Fast organizational triage:** the [`darkpatterns/`](darkpatterns/README.md) directory contains equivalent Go and Java implementations of this layer's scan logic — for triaging many reported interactions quickly, since these patterns are risks to whole organizations and not just to individuals.
+
+**The advanced objective** is not to become better at covertly controlling other people's decisions. It is to become harder to manipulate, harder to mislead, and better at identifying where influence attempts intersect with real organizational risk.
+
+**Output:** Per-tactic five-field record, reciprocity audit result, and escalation or de-escalation decision.
 
 ## The Final Decision Gate
 
