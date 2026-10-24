@@ -326,7 +326,7 @@ The false-positive field is essential. Without it, the framework turns ordinary 
 
 **Reciprocity audit:** if you recognize a tactic because you understand how it works, check whether your own proposed conduct reproduces the same mechanism. This extends the Layer 11 mirror test and the Layer 13 pressure ceiling.
 
-**Fast organizational triage:** the [`darkpatterns/`](darkpatterns/README.md) directory contains equivalent Go, Java, and Python implementations of this layer's scan logic — for triaging many reported interactions quickly, since these patterns are risks to whole organizations and not just to individuals.
+**Fast organizational triage:** the [`darkpatterns/`](darkpatterns/README.md) directory contains equivalent Go, Java, Python, and C implementations of this layer's scan logic — for triaging many reported interactions quickly, since these patterns are risks to whole organizations and not just to individuals.
 
 **The advanced objective** is not to become better at covertly controlling other people's decisions. It is to become harder to manipulate, harder to mislead, and better at identifying where influence attempts intersect with real organizational risk.
 
