@@ -1,6 +1,6 @@
 # The Charm–Persuasion–Advancement Framework
 
-**Training edition · Layers 0–12 · Three core protocols · Mirror test · Final decision gate**
+**Training edition · Layers 0–13 · Three core protocols · Mirror test · Final decision gate**
 
 A structured framework for training people in genuine charm, ethical persuasion, and career advancement through evidence, value, reciprocity, timing, and defensible influence.
 
@@ -190,7 +190,9 @@ Draft Question 1 (position) and Question 2 (priority), then draft the confirmati
 
 Identify the genuine external clock. Attach it to their confirmed priority. Set your own limit: three exchanges, defined end date. Write the stop-date down before you start.
 
-**Output:** A real deadline with its source documented, plus your personal stop-date.
+**Real vs convenient deadlines:** a deadline can be factually real and still be used disproportionately. For every clock you invoke, record (1) what creates the deadline and (2) what actually happens if it expires. If expiry produces inconvenience rather than the claimed consequence, it is a *convenient* deadline — legitimate for planning and prioritization, disproportionate as pressure.
+
+**Output:** A real deadline with its source documented and its expiry consequence stated, plus your personal stop-date.
 
 ## Layer 7 — Resistance, Objections, and Counter-Persuasion
 
@@ -200,7 +202,11 @@ Classify resistance as: **information gap** (they lack something — fix with ev
 
 Counter-persuasion pressure directed at you (flattery, urgency, guilt, social proof) gets the same analysis: what does the evidence support, what's their incentive, what happens if you say no?
 
-**Output:** Resistance classification and revised plan or exit decision.
+**Operational consent:** if someone declines, withdraws permission, or identifies a material concern, stop the relevant action and reassess. Do not reinterpret every refusal as an obstacle to solve. A "no" from the person with authority to give it is an outcome, not a phase of the ask.
+
+**On relationships:** preserving a relationship does not mean avoiding every conflict. It means being able to disagree, impose legitimate consequences, and still treat the other person fairly. Conflict handled honestly at a fair cost strengthens trust; conflict avoided dishonestly mortgages it.
+
+**Output:** Resistance classification, consent status, and revised plan or exit decision.
 
 ## Layer 8 — Follow-Through and Reciprocity
 
@@ -245,7 +251,30 @@ Before executing any persuasive play, apply the mirror test:
 
 If any answer is no, redesign the play at Layer 4. The framework's techniques are only permitted to run on top of truth.
 
-**Output:** Pass/fail per question, with a redesigned play on any fail.
+**The four counterfactuals** (any failure requires redesign at Layer 4):
+
+- **Adverse-outcome counterfactual:** If my interpretation of their motives is wrong, does my plan remain proportionate?
+- **Independent-review counterfactual:** Would an uninvolved reviewer reach a similar conclusion using only the evidence available before I acted?
+- **Role-reversal counterfactual:** Would I accept the same method if a colleague used it against me to pursue a legitimate business objective?
+- **Benefit-separation counterfactual:** If I receive no personal advantage, would I still consider the action appropriate?
+
+**Output:** Pass/fail per question and per counterfactual, with a redesigned play on any fail.
+
+## Layer 13 — Legitimate Pressure: Evidence, Trade-offs, and Accountability
+
+**Core question: Am I moving this decision with evidence and honest costs, or with pressure?**
+
+Pressure is not prohibited — illegitimate pressure is. The three legitimate forms, in ascending order of escalation:
+
+1. **Evidence pressure.** Present verifiable facts, documented discrepancies, and unresolved risks. Let the evidence constrain the available explanations rather than exaggerating what it proves. A fact that is real but framed beyond what it supports is evidence pressure misused.
+2. **Trade-off pressure.** Make the costs of each viable option explicit: time, money, scope, quality, or risk. Then allow the responsible decision-maker to choose between honest alternatives. A trade-off with one option silently pre-determined is not a trade-off.
+3. **Accountability pressure.** Establish clear ownership, measurable commitments, review dates, and documented escalation paths. Apply the same standards consistently — including to yourself. Standards that bind only others are pressure illegitimately applied.
+
+Prohibited forms remain prohibited: invented facts, fake urgency, provocation (Layer 12), social ambush, and escalation of pressure as a response to refusal.
+
+**Output:** The pressure type used, its honest basis in writing, and confirmation the decision-maker kept a real choice.
+
+# Part IV — Adversarial patterns and legitimate pressure
 
 ## Layer 12 — The Provocation Loop (Recognition and Defense)
 
@@ -292,6 +321,7 @@ Stop and exit (do not escalate) when:
 
 - The confirmed priority cannot be served by anything you can honestly offer.
 - The clock expires without a yes — the limit you set is binding on you too.
+- The counterparty declines, withdraws permission, or identifies a material concern — stop the relevant action and reassess; refusal is an outcome, not an obstacle.
 - Succeeding would require an invented fact, a fake deadline, or a promise you can't keep.
 - The counterparty's consent is compromised (distress, intoxication, information you know they'd reject if they had it).
 - The cost in relationship, reputation, or time exceeds the value at stake — the mirror test fails in hindsight.
