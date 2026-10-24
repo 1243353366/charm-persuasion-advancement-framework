@@ -102,6 +102,14 @@ Any "no" or "not sure": redesign at Layer 4 before you act.
 
 **Drill:** After every interaction this week where you heard a refusal, partial withdrawal, or material concern, record: what you did in the next 60 seconds, and whether it was "stop and reassess" or "reinterpret and keep pushing." Target: 100% stop-and-reassess. A decline from the decision-maker is a completed outcome, not an obstacle to solve.
 
+## Standing drill — The five-field matrix (Layer 14)
+
+**Drill (weekly):** Pick one interaction that felt off. For each of the five tactics, write the five fields: signal, mechanism, countermeasure, false-positive risk, escalation threshold. If you cannot articulate a plausible false-positive explanation, you have not finished the analysis.
+
+**Sparring:** Partner presents a realistic ambiguous scenario (a pushed deadline, a binary "choice," a loaded framing). You must name the tactic, its mechanism, its countermeasure — and one innocent explanation for the same signal — within two minutes. Naming a tactic without the false-positive is a fail: it trains paranoia, not judgment.
+
+**Reciprocity audit:** after each drill, check your own planned response against the mechanism you just named. If your countermeasure reproduces the tactic, redesign.
+
 ## Standing rules for trainees
 
 1. Never invent a fact or a deadline. Automatic expulsion from the exercise.
