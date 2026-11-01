@@ -29,7 +29,24 @@ EXPECT_FIRED = {
     "clean.txt": 0,
     "urgency.txt": 1,
     "provocation.txt": 1,
+    "sensitive.txt": 2,
 }
+
+
+def privacy_sentinels(path):
+    """Values of `context_` keys: high-sensitivity data that must never be
+    echoed into a report. Derived from the corpus so new sentinels are
+    enforced automatically."""
+    values = []
+    try:
+        with open(path, encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith("context_") and "=" in line:
+                    values.append(line.split("=", 1)[1].strip())
+    except OSError:
+        pass
+    return values
 
 
 def fired_count(output: str) -> int:
@@ -153,6 +170,14 @@ for name, expected in sorted(EXPECT_FIRED.items()):
     count = fired_count(ref_res.stdout)
     if count != expected:
         failures.append(f"{name}: expected {expected} tactic(s) fired, got {count}")
+
+    # Privacy guarantee: reports must never echo input values.
+    for sentinel in privacy_sentinels(inp):
+        for lang, res in outputs.items():
+            if sentinel and sentinel in res.stdout:
+                failures.append(
+                    f"{name}/{lang}: report echoes sensitive input value {sentinel!r} "
+                    "(reports must contain no input data)")
 
 # Exit-code conformance on a missing input file.
 for r in active:
