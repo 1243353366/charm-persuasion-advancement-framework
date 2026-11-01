@@ -358,6 +358,18 @@ Escalation of pressure is never a permitted next step. The next step is always: 
 
 ---
 
+## Supply chain integrity
+
+This repo ships **no binaries** — four single-file scanners you compile yourself in seconds.
+
+- **Nothing to trojanize.** No releases, no dist artifacts, no package-registry builds. If someone hands you a binary claiming to be this tool, rebuild from source and compare hashes: `tools/build.sh` prints them. A differing hash means the binary is not this tool.
+- **Reproducible builds.** `tools/reproduce.sh` builds twice and compares the hashes. Go is built with `-trimpath -buildvcs=false`; C with fixed flags.
+- **Capability floor, machine-checked.** The scanners perform no network I/O, no file writes, and no process execution. `tools/verify.sh` fails the tree if any such API appears in the sources, so an added exfiltration path is a visible, reviewable event.
+- **Manifest.** `MANIFEST.sha256` records the hash of every source and doc file; `tools/verify.sh` checks the tree against it. Publish the manifest's own hash out of band — a manifest committed beside the code it certifies is convenient, not authoritative.
+- **Pin by commit.** Vendor a specific commit (`git checkout <sha>`) rather than tracking `main`, so upstream drift cannot silently change what you build.
+
+Full threat model, limitations, and residual risk: [SECURITY.md](SECURITY.md).
+
 # Training program
 
 See [TRAINING.md](TRAINING.md) for the eight-week curriculum: weekly drills for each protocol and layer, sparring exercises, and a scoring rubric.
