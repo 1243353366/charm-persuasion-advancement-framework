@@ -11,6 +11,7 @@ This repository ships **four single-file scanners and no binaries**. That design
 | Dependency-chain attack | Compromised transitive dependency | **No dependency surface.** Go: stdlib only, no `go.mod` deps. Java: `java.io`/`java.nio`/`java.util` only. Python: stdlib only. C: libc only. |
 | Silent capability upgrade | Trojanized build exfiltrates or persists | **Capability floor, machine-checked.** The scanners perform no network I/O, no file writes, no process execution. `tools/verify.sh` fails the tree if any of those capabilities appear in source, so adding one is a visible, reviewable event. |
 | Build-time compromise | Malicious build step injects code | **Reproducible build.** `tools/reproduce.sh` builds twice and compares hashes; a mismatched build is a tampering signal. |
+| Sensitive report exposure | A report is stored insecurely, synced, or leaked | **Reports contain no input data** — no paths, usernames, or excerpts; enforced by a privacy regression test. Residual risk is the *tactic list itself*, which can imply who and what. |
 
 ## What each defense actually buys
 
@@ -29,6 +30,26 @@ tools/build.sh         # canonical build, prints artifact hashes
 ```
 
 All three are pure shell and need no toolchains beyond the ones they test for; `verify.sh` alone needs only bash, coreutils, and grep.
+
+## Reporting on sensitive material
+
+**Reports are minimal by design, and the minimum is machine-checked.** A report contains only: a header, one five-field record per fired tactic (static text from the rule table), the fired-tactic count, and two closing notes. It contains **no input data** — no field values, no file paths, no usernames, no message excerpts. `darkpatterns/tests/conformance.py` enforces this: every corpus case carrying `context_*` keys has those values asserted absent from every implementation's output, for every language, and the run fails if any implementation begins echoing input.
+
+Verified behavior:
+- **No echo, ever.** Field values are parsed for rule evaluation and discarded; only counts and static text reach stdout.
+- **Nothing leaves the machine.** No network, no writes, no telemetry (capability floor, `tools/verify.sh`).
+- **The error path** prints the input filename to your terminal if a file cannot be opened; it never enters a report. If the filename itself is sensitive (a case name, a source's name), feed input on stdin (`-`) instead of passing a path.
+
+### Guidance for high-risk users
+
+Journalists, activists, researchers, and anyone whose case details are themselves sensitive:
+
+- **Pipe the interaction in; don't write it to disk.** `printf '…' | tools/safe-report.sh c ~/secure/case.txt` — no temp file, nothing to shred.
+- **Use `tools/safe-report.sh`.** It writes the report `0600` and prints only the one-line risk summary, so a report can sit on screen in front of someone else.
+- **Share the summary, not the record.** The full record names which tactics were detected in your situation. That list is often enough to imply who and what, even with no names in it.
+- **Your case notes are the real exposure surface.** The scanner's output is deliberately low-detail; the context you write around it — names, dates, what happened — is the sensitive artifact. Keep it encrypted, off synced drives, and delete it when the case closes.
+- **Run offline.** Nothing here needs a network. An air-gapped run removes the accidental-exfiltration path entirely.
+- **Shell history:** prefix sensitive commands with a space when `HISTCONTROL=ignorespace`, or run `set +o history` for the session.
 
 ## Residual risk — stated plainly
 
