@@ -4,6 +4,8 @@ Reference implementations of **Layer 14** in Go, Java, Python, and C, built for 
 
 All four implementations share the same rule set and output format. The Python and C scanners are held to behavioral parity with the Go reference: identical input format, five-field records, risk thresholds, output strings, and exit codes (0 on success, 1 on input error). No dependencies, no network, single source file each — easy to drop into an existing codebase or CI pipeline.
 
+**Read the limits first:** these scanners evaluate the interaction you describe, not a device or a filesystem, and the five rules are public — an informed adversary can avoid every one. Detection is a floor, not an assurance; see "What this tool cannot see" in [SECURITY.md](../SECURITY.md). Run unprivileged; elevation buys nothing.
+
 **Reports contain no input data** — no paths, usernames, or excerpts, only static five-field records and a tactic count. This is enforced by a privacy regression test over `context_*` sentinels in the corpus. For high-sensitivity cases, use `tools/safe-report.sh` (report written `0600`, only the summary line printed); see [SECURITY.md](../SECURITY.md).
 
 **Before building from a fresh checkout**, run the integrity gate from the repo root: `tools/verify.sh` (manifest match, no committed binaries, capability floor intact). Threat model and residual risk: [SECURITY.md](../SECURITY.md).
