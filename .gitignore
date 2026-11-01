@@ -1,0 +1,15 @@
+# Build artifacts are never committed. There are no released binaries.
+dist/
+*.class
+*.jar
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.a
+*.pyc
+__pycache__/
+darkscan-c
+darkscan-go
+darkpatterns/c/darkscan
