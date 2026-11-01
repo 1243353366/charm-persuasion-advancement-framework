@@ -11,6 +11,7 @@ This repository ships **four single-file scanners and no binaries**. That design
 | Dependency-chain attack | Compromised transitive dependency | **No dependency surface.** Go: stdlib only, no `go.mod` deps. Java: `java.io`/`java.nio`/`java.util` only. Python: stdlib only. C: libc only. |
 | Silent capability upgrade | Trojanized build exfiltrates or persists | **Capability floor, machine-checked.** The scanners perform no network I/O, no file writes, no process execution. `tools/verify.sh` fails the tree if any of those capabilities appear in source, so adding one is a visible, reviewable event. |
 | Build-time compromise | Malicious build step injects code | **Reproducible build.** `tools/reproduce.sh` builds twice and compares hashes; a mismatched build is a tampering signal. |
+| Impersonation / lookalike distribution | Someone offers a "darkscan installer", .exe, .dmg, or a similarly named repo | **There is nothing to install.** No releases, no installers, no binaries exist under this project's name. Anything offered as a download is not this tool. |
 | Sensitive report exposure | A report is stored insecurely, synced, or leaked | **Reports contain no input data** — no paths, usernames, or excerpts; enforced by a privacy regression test. Residual risk is the *tactic list itself*, which can imply who and what. |
 
 ## What each defense actually buys
@@ -20,6 +21,15 @@ This repository ships **four single-file scanners and no binaries**. That design
 3. **Capability minimization, enforced.** The scanners read one input file (or stdin) and write to stdout. Nothing else. `tools/verify.sh` greps the four scanner sources for network, filesystem-write, and process-execution APIs and fails on any hit. A compromised commit that adds exfiltration must also visibly add `net/http`, `java.net`, `urllib`, `socket()`, or similar — and that shows up in `git diff` and in this gate.
 4. **Manifest verification.** `MANIFEST.sha256` records the hash of every source and doc file. `tools/verify.sh` checks the tree against it. A one-byte change anywhere is detectable.
 5. **Commit-hash pinning.** Consumers should vendor a specific commit, not track `main`: `git clone … && git checkout <sha>`. Combined with `git verify-commit` where commits are signed, silent upstream drift stops mattering.
+
+## If someone offers you this tool as a download
+
+This project ships **no installers, no releases, and no binaries**. There is no `.exe`, `.dmg`, `.tar.gz`, or app bundle with this name, and no package on any registry. That is deliberate: a tool with nothing to install cannot be impersonated by an installer.
+
+- **A file claiming to be darkscan is not this project.** If you received a binary, an "installer", or a repo that merely looks similar, you have the impersonation attempt, not the tool.
+- **Verify provenance, not vibes.** Clone the repo, pin a commit (`git checkout <sha>`), and check `MANIFEST.sha256` against the copy whose own hash you obtained out of band. Then read the diff since your last pinned commit. That is the whole verification story — no artifact to trust.
+- **Signed checksums beat unsigned ones.** A `SHA256SUMS` file served from the same host as the download proves nothing if that host is compromised; both can be swapped together. Only a detached signature (GPG/minisign) verified against a key fingerprint obtained through a *different* channel establishes origin. If this project ever ships binaries, they will be signed, with the fingerprint published independently of the repo.
+- **Prefer source over artifacts.** `python3 darkpatterns/python/darkscan.py`, `cc` the C file, or build with `tools/build.sh`. Every implementation is one file you can read end to end.
 
 ## Verifying a checkout
 
@@ -57,6 +67,7 @@ Journalists, activists, researchers, and anyone whose case details are themselve
 - **The manifest's own hash must come from an out-of-band channel** (a release announcement, a second mirror, a colleague) to be worth anything. A manifest committed next to the code it certifies is convenient, not authoritative.
 - **Self-attestation is worthless.** A trojanized binary can print any version string, any hash, and any "self-test passed" line. Only rebuilding from independently obtained source proves anything, which is why this project's verification story is "build it yourself" and not "trust our checksum file".
 - **Unsigned commits remain unsigned.** Add signing and CI build provenance (GitHub Actions attestations) as the next hardening step once maintainer keys exist; see `.github/workflows/conformance.yml` for where the gate runs.
+- **There is no signing key yet**, so "verify the signature" is advice this project cannot yet satisfy. Until a key exists and its fingerprint is published independently, the only strong check available is: build from a pinned commit, compare hashes, and read the code.
 
 ## Reporting
 
