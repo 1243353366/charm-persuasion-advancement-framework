@@ -20,7 +20,10 @@ This repository ships **four single-file scanners and no binaries**. That design
 2. **Reproducible builds.** Go is built with `-trimpath -buildvcs=false`; C with fixed flags. Two builds of the same source produce identical hashes, so a user can rebuild and compare against any binary someone hands them. If the hashes differ, the binary is not this tool.
 3. **Capability minimization, enforced.** The scanners read one input file (or stdin) and write to stdout. Nothing else. `tools/verify.sh` greps the four scanner sources for network, filesystem-write, and process-execution APIs and fails on any hit. A compromised commit that adds exfiltration must also visibly add `net/http`, `java.net`, `urllib`, `socket()`, or similar — and that shows up in `git diff` and in this gate.
 4. **Manifest verification.** `MANIFEST.sha256` records the hash of every source and doc file. `tools/verify.sh` checks the tree against it. A one-byte change anywhere is detectable.
-5. **Commit-hash pinning.** Consumers should vendor a specific commit, not track `main`: `git clone … && git checkout <sha>`. Combined with `git verify-commit` where commits are signed, silent upstream drift stops mattering.
+5. **Air-gap proof at runtime.** `tools/airgap-test.sh` runs the scanners under an `LD_PRELOAD` shim that fails `socket()`, `connect()`, and `getaddrinfo()` (plus a network namespace where the kernel permits), and verifies the report is byte-identical. A scanner that touched the network could not complete. The shim's blocking is itself tested first, so the proof cannot pass vacuously.
+6. **Artifact verification.** `tools/verify-artifact.sh <binary>` rebuilds from source and compares hashes; a binary that does not match a fresh build from this tree is reported as untrusted. With an expected hash it compares directly, while stating plainly that the hash is only as trustworthy as the channel it arrived on.
+7. **Signing workflow, ready but unkeyed.** `tools/sign-artifacts.sh` produces `SHA256SUMS` plus a detached signature — and refuses to run without an existing secret key, because a key generated next to the artifact proves nothing. No maintainer key is published yet; until one is, verification rests on rebuilding from a pinned commit.
+8. **Commit-hash pinning.** Consumers should vendor a specific commit, not track `main`: `git clone … && git checkout <sha>`. Combined with `git verify-commit` where commits are signed, silent upstream drift stops mattering.
 
 ## If someone offers you this tool as a download
 
@@ -40,6 +43,24 @@ tools/build.sh         # canonical build, prints artifact hashes
 ```
 
 All three are pure shell and need no toolchains beyond the ones they test for; `verify.sh` alone needs only bash, coreutils, and grep.
+
+## What this tool cannot see
+
+Honest capability boundaries, in the same spirit as auditing any signature-based scanner:
+
+- **It is a reasoning aid, not a sensor.** The scanners evaluate the interaction *you describe* in the input file. They do not inspect a device, a mailbox, a filesystem, or a network. If the description omits a signal, the report omits the tactic. Operator input is the ceiling of detection.
+- **The rules are static and public.** An adversary who reads `TACTICS` knows exactly which five patterns are flagged and can avoid all of them — pacing pressure across weeks, keeping deadlines technically sourced, or restricting selective disclosure to verbal channels. Detection is therefore a floor, not an assurance.
+- **No attribution, no intent proof.** A fired tactic means "this pattern is present in the description," never "this person is manipulating you." That is what the false-positive field and the reciprocity audit exist for.
+- **No baseline, no anomaly detection.** It cannot notice that behavior changed, only that a described pattern matches.
+- **Complement, not replacement.** Use it alongside human judgment, contemporaneous records, and — where stakes justify it — qualified advice. A clean report is not a clearance.
+
+If a vendor or a guide presents a tool of this class as *guaranteed* spyware or manipulation detection, that claim is the red flag.
+
+## Privilege posture
+
+- **Runs unprivileged.** Every implementation reads one input file (or stdin) and writes to stdout. No root, no administrator, no `sudo`, no macOS Full Disk Access, no system directories.
+- **If any guide tells you to run it with elevated privileges, that guide is wrong** — for this tool, elevation buys nothing and only enlarges the blast radius of a compromised environment.
+- **Filesystem footprint:** none. It creates no cache, config, log, or state. The only artifact that can exist is a report you redirect yourself, and `tools/safe-report.sh` writes that `0600`.
 
 ## Reporting on sensitive material
 
