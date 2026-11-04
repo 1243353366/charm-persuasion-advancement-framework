@@ -373,3 +373,7 @@ Full threat model, limitations, and residual risk: [SECURITY.md](SECURITY.md).
 # Training program
 
 See [TRAINING.md](TRAINING.md) for the eight-week curriculum: weekly drills for each protocol and layer, sparring exercises, and a scoring rubric.
+
+---
+
+Thanks for reading. More of my work: [github.com/1243353366](https://github.com/1243353366).
